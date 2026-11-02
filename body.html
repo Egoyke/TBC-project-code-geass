@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<!-- 
+  <!DOCTYPE html>: Declares that this document is an HTML5 document, ensuring modern standard rendering in all web browsers.
+  <html lang="en">: The root element of the page. 'lang="en"' specifies English for screen readers and search engines.
+-->
+<html lang="en">
+
+<!-- 
+  <head>: Contains machine-readable metadata about the document (title, character encoding, viewport settings, and CDN links) that is not displayed directly on the page.
+-->
+<head>
+  <!-- 
+    <meta charset="UTF-8">: Specifies UTF-8 character encoding so special characters and symbols render properly.
+  -->
+  <meta charset="UTF-8">
+
+  <!-- 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">: 
+    Ensures responsive design on mobile devices by matching the layout width to the device screen width and setting the initial zoom level to 100% (1.0).
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 
+    <title>: Sets the title of the document shown in the browser tab and search engine results.
+  -->
+  <title>Code Geass: Archive of the Rebellion</title>
+
+  <!-- 
+    <link rel="stylesheet" href="...">: Loads Tailwind CSS via a Content Delivery Network (CDN) link in the <head> without requiring any JavaScript (<script>) or custom external CSS files.
+  -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<!-- 
+  <body>: Represents the visible content of the HTML document.
+  Tailwind Classes:
+  - bg-gray-900: Sets a very dark gray/charcoal background color for an anime dark-mode theme.
+  - text-gray-100: Sets the default text color to off-white for high contrast and readability.
+  - font-sans: Applies a clean, modern sans-serif system font stack.
+  - leading-relaxed: Increases line-height (1.625) to make body paragraphs easier to read.
+  - min-h-screen: Ensures the body is at least 100% of the viewport height.
+  - flex: Turns the body into a Flexbox container.
+  - flex-col: Stacks direct child elements (header, main, footer) vertically in a column.
+-->
+<body class="bg-gray-900 text-gray-100 font-sans leading-relaxed min-h-screen flex flex-col">
+
+  <!-- =====================================================================
+       1. HEADER SECTION (Logo & Navigation)
+       ===================================================================== -->
+  <!-- 
+    <header>: Semantic HTML5 tag representing the introductory top bar of the page containing brand identity and primary navigation.
+    Tailwind Classes:
+    - bg-gray-800: Sets a slightly lighter dark gray background to separate the header from the body.
+    - border-b: Adds a 1px bottom border.
+    - border-red-700: Colors the bottom border crimson red (signature Code Geass Geass-eye color).
+    - sticky: Keeps the header positioned at the top of the viewport when scrolling.
+    - top-0: Anchors the sticky header to 0px from the top edge of the screen.
+    - z-50: Assigns a high stack order (z-index: 50) so the header stays above all scrolling content.
+    - shadow-lg: Applies a large drop shadow beneath the header for visual depth.
+  -->
+  <header class="bg-gray-800 border-b border-red-700 sticky top-0 z-50 shadow-lg">
+
+    <!-- 
+      <div>: Layout container to center and constrain the maximum width of the header content.
+      Tailwind Classes:
+      - max-w-6xl: Constrains the container's maximum width to 72rem (1152px) on large screens.
+      - mx-auto: Sets horizontal margins to 'auto', centering the container inside the header.
+      - px-6: Adds 1.5rem (24px) of horizontal padding on the left and right.
+      - py-4: Adds 1rem (16px) of vertical padding on the top and bottom.
+      - flex: Enables Flexbox layout for aligning the logo and navigation menu.
+      - flex-col: Stacks the logo and navigation vertically on small mobile screens.
+      - md:flex-row: On medium screens (>=768px) and up, arranges logo and nav horizontally in a row.
+      - justify-between: Pushes the logo to the far left and the navigation links to the far right.
+      - items-center: Vertically centers the logo and navigation links along the cross-axis.
+    -->
+    <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center">
+
+      <!-- 
+        <a>: Anchor tag acting as the clickable brand logo that links back to the top of the page (#hero).
+        Tailwind Classes:
+        - text-2xl: Sets font size to 1.5rem (24px).
+        - font-extrabold: Applies extra-bold font weight (800).
+        - tracking-wider: Increases letter-spacing for a cinematic title look.
+        - text-white: Sets base logo text color to pure white.
+        - hover:text-red-500: Changes text color to light red when hovered with the mouse.
+        - transition: Enables smooth CSS property transitions.
+        - duration-300: Sets the hover transition duration to 300 milliseconds.
+      -->
+      <a href="#hero" class="text-2xl font-extrabold tracking-wider text-white hover:text-red-500 transition duration-300">
+        <!-- 
+          <span>: Inline container used to highlight part of the logo text in red.
+          Tailwind Classes:
+          - text-red-600: Colors the word "CODE" in crimson red.
+        -->
+        <span class="text-red-600">CODE</span> GEASS
+      </a>
+
+      <!-- 
+        <nav>: Semantic HTML5 tag defining a section of navigation links.
+        'aria-label="Main Navigation"' improves accessibility for screen readers.
+        Tailwind Classes:
+        - mt-3: Adds 0.75rem (12px) top margin on mobile when stacked below the logo.
+        - md:mt-0: Removes the top margin (0px) on medium screens and larger where items sit side-by-side.
+      -->
+      <nav aria-label="Main Navigation" class="mt-3 md:mt-0">
+        <!-- 
+          <ul>: Unordered list representing the group of navigation items.
+          Tailwind Classes:
+          - flex: Arranges the list items (<li>) horizontally in a row.
+          - space-x-8: Automatically adds 2rem (32px) of horizontal spacing between each list item.
+          - text-sm: Sets font size to 0.875rem (14px).
+          - font-semibold: Applies semi-bold font weight (600).
+          - uppercase: Transforms all navigation text into capital letters.
+          - tracking-wide: Slightly increases letter spacing for readability in uppercase.
+        -->
+        <ul class="flex space-x-8 text-sm font-semibold uppercase tracking-wide">
+          <!-- <li>: Individual list item inside the navigation list. -->
+          <li>
+            <!-- 
+              <a>: Hyperlink navigating to the #hero section ID on the same page.
+              Tailwind Classes:
+              - text-gray-300: Sets default link color to light gray.
+              - hover:text-red-500: Highlights the link in red on mouse hover.
+              - transition: Smoothly animates the color change.
+              - duration-200: Sets the animation speed to 200 milliseconds.
+            -->
+            <a href="#hero" class="text-gray-300 hover:text-red-500 transition duration-200">Home</a>
+          </li>
+          <li>
+            <a href="#characters" class="text-gray-300 hover:text-red-500 transition duration-200">Characters</a>
+          </li>
+          <li>
+            <a href="#about" class="text-gray-300 hover:text-red-500 transition duration-200">Lore</a>
+          </li>
+          <li>
+            <a href="#footer" class="text-gray-300 hover:text-red-500 transition duration-200">Credits</a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- 
+    <main>: Semantic HTML5 tag wrapping the primary, unique content of the document.
+    Tailwind Classes:
+    - flex-grow: Allows <main> to expand and fill available vertical space, pushing <footer> to the bottom of the screen.
+  -->
+  <main class="flex-grow">
+
+    <!-- =====================================================================
+         2. HERO SECTION (Title, Short Description, CTA Button)
+         ===================================================================== -->
+    <!-- 
+      <section id="hero">: Semantic HTML5 tag representing a standalone thematic section of the page.
+      Tailwind Classes:
+      - bg-gradient-to-b: Applies a vertical linear background gradient from top to bottom.
+      - from-gray-900: Starts the gradient with very dark gray at the top.
+      - via-red-900: Transitions through a deep imperial crimson in the middle.
+      - to-gray-900: Ends the gradient back in very dark gray at the bottom for a seamless blend.
+      - py-20: Adds 5rem (80px) of top and bottom vertical padding.
+      - md:py-28: Increases top and bottom vertical padding to 7rem (112px) on medium screens and larger.
+      - px-6: Adds 1.5rem (24px) of left and right padding so text never touches screen edges on mobile.
+      - text-center: Horizontally centers all inline text and elements inside the section.
+      - border-b: Adds a 1px bottom border.
+      - border-gray-800: Colors the bottom border dark gray.
+    -->
+    <section id="hero" class="bg-gradient-to-b from-gray-900 via-red-900 to-gray-900 py-20 md:py-28 px-6 text-center border-b border-gray-800">
+
+      <!-- 
+        <div>: Inner wrapper to restrict the width of the hero text for optimal reading line length.
+        Tailwind Classes:
+        - max-w-4xl: Limits maximum width to 56rem (896px).
+        - mx-auto: Centers the wrapper horizontally within the section.
+      -->
+      <div class="max-w-4xl mx-auto">
+
+        <!-- 
+          <p>: Subtitle badge displayed above the main heading.
+          Tailwind Classes:
+          - inline-block: Allows the element to sit inline while accepting padding and borders like a block element.
+          - bg-red-800: Sets a deep red background color.
+          - text-red-200: Sets a soft pink/red text color for contrast.
+          - text-xs: Sets extra-small font size (0.75rem / 12px).
+          - font-bold: Applies bold font weight (700).
+          - uppercase: Converts text to all caps.
+          - tracking-widest: Applies maximum letter spacing (0.1em).
+          - px-4: Adds 1rem (16px) of horizontal padding.
+          - py-1: Adds 0.25rem (4px) of vertical padding.
+          - rounded-full: Rounds the corners completely into a pill shape.
+          - mb-6: Adds 1.5rem (24px) of bottom margin to separate it from the <h1>.
+          - border: Adds a 1px border around the badge.
+          - border-red-500: Colors the border bright red.
+        -->
+        <p class="inline-block bg-red-800 text-red-200 text-xs font-bold uppercase tracking-widest px-4 py-1 rounded-full mb-6 border border-red-500">
+          Imperial Year 2017 a.t.b. &bull; Area 11 Archive
+        </p>
+
+        <!-- 
+          <h1>: The primary heading of the entire webpage (crucial for SEO and document hierarchy).
+          Tailwind Classes:
+          - text-4xl: Sets font size to 2.25rem (36px) on mobile screens.
+          - md:text-6xl: Scales font size up to 3.75rem (60px) on medium screens and larger.
+          - font-extrabold: Applies extra-bold font weight (800).
+          - text-white: Sets heading color to pure white.
+          - tracking-tight: Slightly tightens letter spacing for large display headlines.
+          - mb-6: Adds 1.5rem (24px) of bottom margin below the title.
+        -->
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6">
+          The Power of the King: <span class="text-red-500">Absolute Obedience</span>
+        </h1>
+
+        <!-- 
+          <p>: Paragraph element providing the short description of the Code Geass universe.
+          Tailwind Classes:
+          - text-lg: Sets font size to 1.125rem (18px) on mobile.
+          - md:text-xl: Increases font size to 1.25rem (20px) on medium and larger screens.
+          - text-gray-200: Uses a soft light-gray color to reduce eye strain compared to pure white.
+          - max-w-2xl: Constrains paragraph width to 42rem (672px) so lines don't become too wide.
+          - mx-auto: Horizontally centers the paragraph block.
+          - mb-10: Adds 2.5rem (40px) of bottom margin before the Call-to-Action button.
+        -->
+        <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mb-10">
+          In a world conquered by the Holy Britannian Empire, an exiled prince gains the mysterious power of Geass and leads a masked rebellion that will reshape destiny forever.
+        </p>
+
+        <!-- 
+          <a>: Call-to-Action (CTA) button linking directly to the #characters section.
+          Tailwind Classes:
+          - inline-block: Allows vertical padding and margin on an inline anchor tag.
+          - bg-red-600: Sets a vibrant crimson button background.
+          - hover:bg-red-700: Darkens the button background on mouse hover for interactive feedback.
+          - text-white: Sets button label color to white.
+          - font-bold: Makes the button text bold (700).
+          - text-lg: Sets font size to 1.125rem (18px).
+          - px-8: Adds 2rem (32px) of horizontal left/right padding.
+          - py-4: Adds 1rem (16px) of vertical top/bottom padding.
+          - rounded-lg: Rounds the corners by 0.5rem (8px).
+          - shadow-xl: Adds an extra-large drop shadow to make the CTA pop off the background.
+          - transition: Enables smooth CSS property transitions on hover.
+          - duration-300: Sets the transition time to 300ms.
+        -->
+        <a href="#characters" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold text-lg px-8 py-4 rounded-lg shadow-xl transition duration-300">
+          Explore the Key Figures &darr;
+        </a>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         3. FEATURES / CHARACTERS SECTION (CSS Grid + Native <details>/<summary>)
+         ===================================================================== -->
+    <!-- 
+      <section id="characters">: Semantic section housing the 3 interactive character cards.
+      Tailwind Classes:
+      - max-w-6xl: Limits the section width to 72rem (1152px).
+      - mx-auto: Centers the section horizontally on the page.
+      - px-6: Adds 1.5rem (24px) of horizontal padding on left and right.
+      - py-16: Adds 4rem (64px) of vertical padding on top and bottom.
+    -->
+    <section id="characters" class="max-w-6xl mx-auto px-6 py-16">
+
+      <!-- 
+        <div>: Section header block containing the section title and user instructions.
+        Tailwind Classes:
+        - text-center: Centers the heading and subtitle text.
+        - mb-12: Adds 3rem (48px) of bottom margin before the CSS Grid starts.
+      -->
+      <div class="text-center mb-12">
+        <!-- 
+          <h2>: Second-level heading for the Characters section.
+          Tailwind Classes:
+          - text-3xl: Sets font size to 1.875rem (30px) on mobile.
+          - md:text-4xl: Increases font size to 2.25rem (36px) on medium screens and up.
+          - font-bold: Applies bold font weight (700).
+          - text-white: Sets heading color to pure white.
+          - mb-3: Adds 0.75rem (12px) bottom margin.
+        -->
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">
+          Architects of Rebellion
+        </h2>
+
+        <!-- 
+          <p>: Instructional subtitle explaining the zero-JavaScript interaction to the user.
+          Tailwind Classes:
+          - text-gray-400: Sets a muted gray color to visually subordinate the subtitle to the <h2>.
+          - max-w-xl: Constrains width to 36rem (576px).
+          - mx-auto: Horizontally centers the paragraph.
+        -->
+        <p class="text-gray-400 max-w-xl mx-auto">
+          Click on any character dossier below to reveal their classified biography and official Wikipedia archive link.
+        </p>
+      </div>
+
+      <!-- 
+        <div>: The CSS Grid container holding the 3 character cards.
+        Tailwind Classes:
+        - grid: Activates CSS Grid layout (`display: grid`).
+        - grid-cols-1: Displays 1 column on mobile devices so cards stack cleanly.
+        - md:grid-cols-3: Displays 3 equal-width columns (`grid-template-columns: repeat(3, minmax(0, 1fr))`) on medium screens (>=768px) and up.
+        - gap-8: Adds a 2rem (32px) gap between both rows and columns in the grid.
+        - items-start: Aligns grid items to the top of their grid track so expanding one <details> card does not awkwardly stretch the height of neighboring closed cards.
+      -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+
+        <!-- =================================================================
+             CHARACTER CARD 1: LELOUCH VI BRITANNIA
+             ================================================================= -->
+        <!-- 
+          <article>: Semantic HTML5 tag representing a self-contained composition (a character dossier card).
+          Tailwind Classes:
+          - bg-gray-800: Sets card background to dark slate gray.
+          - border: Adds a 1px solid border around the card.
+          - border-gray-700: Colors the border medium-dark gray.
+          - hover:border-red-600: Changes the border color to crimson red when hovering over the card.
+          - rounded-xl: Rounds card corners by 0.75rem (12px).
+          - overflow-hidden: Clips any child content (like top banners) to match the rounded corners.
+          - shadow-lg: Applies a large drop shadow for card elevation.
+          - transition: Smoothly animates border color changes on hover.
+          - duration-300: Sets transition duration to 300ms.
+        -->
+        <article class="bg-gray-800 border border-gray-700 hover:border-red-600 rounded-xl overflow-hidden shadow-lg transition duration-300">
+
+          <!-- 
+            <details>: Native HTML5 disclosure element that toggles between an "open" and "closed" state when its child <summary> is clicked—achieving interactivity with ZERO JavaScript.
+            Tailwind Classes:
+            - group: Marks this parent element so child elements could react to its state if needed, and keeps the structure clean.
+          -->
+          <details class="group">
+
+            <!-- 
+              <summary>: The always-visible, clickable header portion of the <details> tag. Clicking anywhere inside <summary> (including the photo and badges) toggles the hidden content below it.
+              Tailwind Classes:
+              - cursor-pointer: Changes the mouse pointer to a hand icon to signal clickability.
+              - select-none: Prevents accidental text highlighting when a user double-clicks the card.
+              - hover:bg-gray-700: Slightly lightens the card background when hovered to indicate interactivity.
+              - transition: Smoothly animates the background color change.
+              - duration-200: Sets the hover transition duration to 200ms.
+              - list-none: Removes default browser disclosure triangle markers for a custom card UI.
+            -->
+            <summary class="cursor-pointer select-none hover:bg-gray-700 transition duration-200 list-none">
+
+              <!-- 
+                <div>: Image container framing the character portrait at the top of the card.
+                Tailwind Classes:
+                - h-72: Sets fixed height to 18rem (288px) to provide a uniform aspect ratio across all character cards.
+                - w-full: Spans 100% width of the card.
+                - overflow-hidden: Clips any image overflow, especially during the hover scale animation.
+                - bg-gray-900: Dark placeholder background while the network request resolves.
+                - border-b: Adds a 1px border at the base of the image.
+                - border-gray-700: Matches the card border color.
+              -->
+              <div class="h-72 w-full overflow-hidden bg-gray-900 border-b border-gray-700">
+                <!-- 
+                  <img>: Character portrait graphic asset.
+                  Attributes:
+                  - src="...": Direct URL to the portrait image.
+                  - alt="...": Accessible descriptive text for screen readers.
+                  - loading="lazy": Native browser performance optimization to defer offscreen image loading.
+                  Tailwind Classes:
+                  - w-full: Stretches image to 100% of parent width.
+                  - h-full: Stretches image to 100% of parent height.
+                  - object-cover: Preserves image aspect ratio without distortion by cropping excess boundaries.
+                  - object-top: Anchors the crop to the top of the image to keep the character's face centered.
+                  - group-hover:scale-105: Smoothly scales image up 5% when hovering over the card.
+                  - transition: Applies smooth CSS transition animation.
+                  - duration-500: Sets animation duration to 500 milliseconds for a cinematic effect.
+                -->
+                <img 
+                  src="https://i.pinimg.com/736x/44/38/63/4438631ee679426991e63a4d232bea11.jpg" 
+                  alt="Portrait of Lelouch vi Britannia" 
+                  loading="lazy"
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                >
+              </div>
+
+              <!-- 
+                <div>: Text container wrapping character identity details inside the summary.
+                Tailwind Classes:
+                - p-6: Restores 1.5rem (24px) padding on all sides below the flush image header.
+              -->
+              <div class="p-6">
+
+                <!-- 
+                  <div>: Visual emblem/badge header for Lelouch inside the summary.
+                  Tailwind Classes:
+                  - flex: Aligns the role badge and faction tag on the same horizontal row.
+                  - justify-between: Pushes the badge to the left and the number/code to the right.
+                  - items-center: Vertically aligns both items in the center.
+                  - mb-4: Adds 1rem (16px) of bottom margin.
+                -->
+                <div class="flex justify-between items-center mb-4">
+                  <!-- 
+                    <span>: Faction badge.
+                    Tailwind Classes:
+                    - bg-red-900: Dark red badge background.
+                    - text-red-200: Light red text color.
+                    - text-xs: Extra-small font size (12px).
+                    - font-bold: Bold font weight.
+                    - px-3: 0.75rem (12px) horizontal padding.
+                    - py-1: 0.25rem (4px) vertical padding.
+                    - rounded-full: Pill-shaped rounded corners.
+                    - uppercase: Capitalizes all letters.
+                  -->
+                  <span class="bg-red-900 text-red-200 text-xs font-bold px-3 py-1 rounded-full uppercase">
+                    The Black Knights
+                  </span>
+                  <!-- 
+                    <span>: Character code identifier.
+                    Tailwind Classes:
+                    - text-xs: Extra-small font size (12px).
+                    - font-mono: Uses a monospace font for a tactical/dossier look.
+                    - text-gray-400: Muted gray text color.
+                  -->
+                  <span class="text-xs font-mono text-gray-400">ID // ZERO-01</span>
+                </div>
+
+                <!-- 
+                  <h3>: Third-level heading for the character's full name.
+                  Tailwind Classes:
+                  - text-2xl: Sets font size to 1.5rem (24px).
+                  - font-bold: Applies bold font weight (700).
+                  - text-white: Pure white text color.
+                  - mb-1: Adds 0.25rem (4px) bottom margin.
+                -->
+                <h3 class="text-2xl font-bold text-white mb-1">Lelouch vi Britannia</h3>
+
+                <!-- 
+                  <p>: Character alias / title.
+                  Tailwind Classes:
+                  - text-sm: Small font size (0.875rem / 14px).
+                  - text-red-400: Soft crimson text color.
+                  - font-medium: Medium font weight (500).
+                  - mb-4: Adds 1rem (16px) bottom margin.
+                -->
+                <p class="text-sm text-red-400 font-medium mb-4">Alias: Lelouch Lamperouge / Zero</p>
+
+                <!-- 
+                  <p>: Callout prompt letting the user know they can click to toggle details.
+                  Tailwind Classes:
+                  - text-xs: Extra-small font size (12px).
+                  - text-gray-300: Light gray text color.
+                  - bg-gray-900: Dark inset background for the prompt bar.
+                  - py-2: 0.5rem (8px) vertical padding.
+                  - px-3: 0.75rem (12px) horizontal padding.
+                  - rounded: 0.25rem (4px) rounded corners.
+                  - border: 1px border.
+                  - border-gray-700: Subtle dark gray border.
+                -->
+                <p class="text-xs text-gray-300 bg-gray-900 py-2 px-3 rounded border border-gray-700">
+                  &#9662; Click card to toggle classified dossier
+                </p>
+
+              </div>
+
+            </summary>
+
+            <!-- 
+              <div>: The hidden drawer content inside <details> that is revealed ONLY when the user clicks <summary>.
+              Tailwind Classes:
+              - px-6: Adds 1.5rem (24px) of left and right padding to align with the summary above.
+              - pb-6: Adds 1.5rem (24px) of bottom padding.
+              - pt-4: Adds 1rem (16px) of top padding.
+              - border-t: Adds a 1px top border separating the summary from the revealed biography.
+              - border-gray-700: Colors the separator border medium-dark gray.
+              - bg-gray-900: Slightly darker background to visually distinguish the revealed drawer.
+            -->
+            <div class="px-6 pb-6 pt-4 border-t border-gray-700 bg-gray-900">
+
+              <!-- 
+                <p>: Detailed character description revealed upon clicking.
+                Tailwind Classes:
+                - text-sm: Sets font size to 0.875rem (14px).
+                - text-gray-300: Sets readable off-white/light-gray text color.
+                - mb-4: Adds 1rem (16px) bottom margin before the stats list.
+              -->
+              <p class="text-sm text-gray-300 mb-4">
+                The Eleventh Prince of the Holy Britannian Empire and son of Emperor Charles zi Britannia. After being exiled to Japan as a political hostage, Lelouch vows to obliterate Britannia and build a gentler world for his blind and crippled sister, Nunnally. Granted the "Power of Absolute Obedience" by C.C., he dons the mask of Zero and commands the Black Knights with genius-level tactical precision.
+              </p>
+
+              <!-- 
+                <ul>: Quick attribute summary list inside the revealed panel.
+                Tailwind Classes:
+                - text-xs: Extra-small font size (12px).
+                - text-gray-400: Muted gray text color.
+                - space-y-1: Adds 0.25rem (4px) of vertical space between each <li> item.
+                - mb-5: Adds 1.25rem (20px) bottom margin before the Wikipedia button.
+              -->
+              <ul class="text-xs text-gray-400 space-y-1 mb-5">
+                <!-- <li> with <strong>: Bold label for each character attribute. -->
+                <li><strong class="text-gray-200">Ability:</strong> Geass of Absolute Obedience</li>
+                <li><strong class="text-gray-200">Knightmare Frame:</strong> Type-0/0A Shinkiro / Gawain</li>
+                <li><strong class="text-gray-200">Allegiance:</strong> Black Knights / Demon Emperor</li>
+              </ul>
+
+              <!-- 
+                <a>: External redirect link to Lelouch's official Wikipedia article.
+                Attributes:
+                - href="...": The destination URL on Wikipedia.
+                - target="_blank": Opens the Wikipedia page in a new browser tab.
+                - rel="noopener noreferrer": Security best practice that prevents the newly opened tab from accessing the original page's `window.opener` object.
+                Tailwind Classes:
+                - inline-block: Allows padding and full width styling on an inline anchor tag.
+                - w-full: Makes the button span 100% of the card's inner width.
+                - text-center: Centers the button label text horizontally.
+                - bg-red-600: Crimson red button background.
+                - hover:bg-red-700: Darker red background on hover.
+                - text-white: White text color.
+                - text-sm: Small font size (14px).
+                - font-semibold: Semi-bold font weight (600).
+                - py-2: 0.5rem (8px) vertical padding.
+                - px-4: 1rem (16px) horizontal padding.
+                - rounded: 0.25rem (4px) border radius.
+                - transition: Smooth transition animation.
+                - duration-200: 200ms transition duration.
+              -->
+              <a 
+                href="https://en.wikipedia.org/wiki/Lelouch_Lamperouge" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="inline-block w-full text-center bg-red-600 hover:bg-red-700 text-white text-sm font-semibold py-2 px-4 rounded transition duration-200"
+              >
+                Read Full Profile on Wikipedia &rarr;
+              </a>
+
+            </div>
+          </details>
+        </article>
+
+        <!-- =================================================================
+             CHARACTER CARD 2: C.C. (C2)
+             ================================================================= -->
+        <!-- 
+          <article>: Second self-contained character card in the 3-column CSS Grid.
+          Tailwind Classes:
+          - bg-gray-800: Dark slate gray card background.
+          - border: 1px solid border.
+          - border-gray-700: Medium-dark gray default border color.
+          - hover:border-green-500: Changes border color to emerald green on hover (matching C.C.'s iconic green hair).
+          - rounded-xl: 0.75rem (12px) rounded corners.
+          - overflow-hidden: Clips inner child backgrounds to the rounded corners.
+          - shadow-lg: Large drop shadow.
+          - transition: Smooth transition for hover effects.
+          - duration-300: 300ms transition duration.
+        -->
+        <article class="bg-gray-800 border border-gray-700 hover:border-green-500 rounded-xl overflow-hidden shadow-lg transition duration-300">
+
+          <!-- 
+            <details>: Native HTML5 interactive disclosure widget for C.C.'s card.
+            Tailwind Classes:
+            - group: Groups the details element for clean semantic structure.
+          -->
+          <details class="group">
+
+            <!-- 
+              <summary>: Clickable card header for C.C. Clicking anywhere inside <summary> (including the photo and badges) toggles the hidden content below it.
+              Tailwind Classes:
+              - cursor-pointer: Displays a pointer hand cursor on hover.
+              - select-none: Prevents accidental text selection when clicking.
+              - hover:bg-gray-700: Lightens background slightly when hovered.
+              - transition: Smoothly animates background color.
+              - duration-200: 200ms animation duration.
+              - list-none: Removes default browser disclosure triangle markers for a custom card UI.
+            -->
+            <summary class="cursor-pointer select-none hover:bg-gray-700 transition duration-200 list-none">
+
+              <!-- 
+                <div>: Image container framing C.C.'s portrait at the top of the card.
+                Tailwind Classes:
+                - h-72: Sets fixed height to 18rem (288px) to provide a uniform aspect ratio matching all character cards.
+                - w-full: Spans 100% width of the card.
+                - overflow-hidden: Clips any image overflow, especially during the hover scale animation.
+                - bg-gray-900: Dark placeholder background while the network request resolves.
+                - border-b: Adds a 1px border at the base of the image.
+                - border-gray-700: Matches the card border color.
+              -->
+              <div class="h-72 w-full overflow-hidden bg-gray-900 border-b border-gray-700">
+                <!-- 
+                  <img>: Character portrait graphic asset.
+                  Attributes:
+                  - src="...": Direct URL to the portrait image.
+                  - alt="...": Accessible descriptive text for screen readers.
+                  - loading="lazy": Native browser performance optimization to defer offscreen image loading.
+                  Tailwind Classes:
+                  - w-full: Stretches image to 100% of parent width.
+                  - h-full: Stretches image to 100% of parent height.
+                  - object-cover: Preserves image aspect ratio without distortion by cropping excess boundaries.
+                  - object-top: Anchors the crop to the top of the image to keep the character's face centered.
+                  - group-hover:scale-105: Smoothly scales image up 5% when hovering over the card.
+                  - transition: Applies smooth CSS transition animation.
+                  - duration-500: Sets animation duration to 500 milliseconds for a cinematic effect.
+                -->
+                <img 
+                  src="https://i.pinimg.com/1200x/40/53/d8/4053d82f712b7721347004cb7e421610.jpg" 
+                  alt="Portrait of C.C. with long green hair" 
+                  loading="lazy"
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                >
+              </div>
+
+              <!-- 
+                <div>: Text container wrapping character identity details inside C.C.'s summary.
+                Tailwind Classes:
+                - p-6: Restores 1.5rem (24px) padding on all sides below the flush image header.
+              -->
+              <div class="p-6">
+
+                <!-- 
+                  <div>: Top row inside C.C.'s summary holding the faction badge and ID.
+                  Tailwind Classes:
+                  - flex: Flexbox horizontal layout.
+                  - justify-between: Spaces items to opposite left and right edges.
+                  - items-center: Vertically centers items.
+                  - mb-4: 1rem (16px) bottom margin.
+                -->
+                <div class="flex justify-between items-center mb-4">
+                  <!-- 
+                    <span>: Role badge styled in green to match C.C.'s aesthetic.
+                    Tailwind Classes:
+                    - bg-green-900: Deep green background.
+                    - text-green-200: Light pastel green text.
+                    - text-xs: 12px font size.
+                    - font-bold: Bold weight (700).
+                    - px-3: 12px horizontal padding.
+                    - py-1: 4px vertical padding.
+                    - rounded-full: Pill-shaped corners.
+                    - uppercase: Uppercase letters.
+                  -->
+                  <span class="bg-green-900 text-green-200 text-xs font-bold px-3 py-1 rounded-full uppercase">
+                    Geass Directorate
+                  </span>
+                  <!-- 
+                    <span>: Dossier ID label.
+                    Tailwind Classes:
+                    - text-xs: 12px font size.
+                    - font-mono: Monospace font family.
+                    - text-gray-400: Muted gray text color.
+                  -->
+                  <span class="text-xs font-mono text-gray-400">ID // CODE-CC</span>
+                </div>
+
+                <!-- 
+                  <h3>: Character name heading.
+                  Tailwind Classes:
+                  - text-2xl: 24px font size.
+                  - font-bold: Bold font weight (700).
+                  - text-white: Pure white color.
+                  - mb-1: 4px bottom margin.
+                -->
+                <h3 class="text-2xl font-bold text-white mb-1">C.C. (Pronounced "C2")</h3>
+
+                <!-- 
+                  <p>: Character alias / title.
+                  Tailwind Classes:
+                  - text-sm: 14px font size.
+                  - text-green-400: Soft emerald green text color.
+                  - font-medium: Medium font weight (500).
+                  - mb-4: 16px bottom margin.
+                -->
+                <p class="text-sm text-green-400 font-medium mb-4">Alias: The Immortal Witch</p>
+
+                <!-- 
+                  <p>: Visual cue instructing the user to click to expand.
+                  Tailwind Classes:
+                  - text-xs: 12px font size.
+                  - text-gray-300: Light gray text.
+                  - bg-gray-900: Dark background box.
+                  - py-2: 8px vertical padding.
+                  - px-3: 12px horizontal padding.
+                  - rounded: 4px border radius.
+                  - border: 1px solid border.
+                  - border-gray-700: Dark gray border color.
+                -->
+                <p class="text-xs text-gray-300 bg-gray-900 py-2 px-3 rounded border border-gray-700">
+                  &#9662; Click card to toggle classified dossier
+                </p>
+
+              </div>
+
+            </summary>
+
+            <!-- 
+              <div>: Revealed biography container for C.C. when <details> is open.
+              Tailwind Classes:
+              - px-6: 24px left/right padding.
+              - pb-6: 24px bottom padding.
+              - pt-4: 16px top padding.
+              - border-t: 1px top border separator.
+              - border-gray-700: Dark gray border color.
+              - bg-gray-900: Very dark gray background.
+            -->
+            <div class="px-6 pb-6 pt-4 border-t border-gray-700 bg-gray-900">
+
+              <!-- 
+                <p>: Short biography of C.C.
+                Tailwind Classes:
+                - text-sm: 14px font size.
+                - text-gray-300: Light gray text color.
+                - mb-4: 16px bottom margin.
+              -->
+              <p class="text-sm text-gray-300 mb-4">
+                An immortal young woman bearing the Code of Geass, making her impervious to aging and fatal wounds. Having lived for centuries and witnessed the rise and fall of countlessGeass users, she forms a contract with Lelouch to save his life in Shinjuku. Beneath her aloof demeanor and obsession with Pizza Hut lies a tragic past and an unwavering loyalty as Lelouch's closest accomplice.
+              </p>
+
+              <!-- 
+                <ul>: Attribute list for C.C.
+                Tailwind Classes:
+                - text-xs: 12px font size.
+                - text-gray-400: Muted gray text color.
+                - space-y-1: 4px vertical gap between list items.
+                - mb-5: 20px bottom margin.
+              -->
+              <ul class="text-xs text-gray-400 space-y-1 mb-5">
+                <li><strong class="text-gray-200">Ability:</strong> Code of Immortality / Geass Bestowal</li>
+                <li><strong class="text-gray-200">Knightmare Frame:</strong> Lancelot Frontier / Gawain Co-Pilot</li>
+                <li><strong class="text-gray-200">Allegiance:</strong> Lelouch's Accomplices / Black Knights</li>
+              </ul>
+
+              <!-- 
+                <a>: External redirect link to C.C.'s Wikipedia article.
+                Tailwind Classes:
+                - inline-block: Enables block-level box model properties on an inline link.
+                - w-full: Full 100% width button.
+                - text-center: Centers text inside the button.
+                - bg-green-700: Rich green button background.
+                - hover:bg-green-600: Brighter green background on hover.
+                - text-white: White text color.
+                - text-sm: 14px font size.
+                - font-semibold: Semi-bold weight (600).
+                - py-2: 8px vertical padding.
+                - px-4: 16px horizontal padding.
+                - rounded: 4px rounded corners.
+                - transition: Smooth property transitions.
+                - duration-200: 200ms transition duration.
+              -->
+              <a 
+                href="https://en.wikipedia.org/wiki/C.C._(Code_Geass)" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="inline-block w-full text-center bg-green-700 hover:bg-green-600 text-white text-sm font-semibold py-2 px-4 rounded transition duration-200"
+              >
+                Read Full Profile on Wikipedia &rarr;
+              </a>
+
+            </div>
+          </details>
+        </article>
+
+        <!-- =================================================================
+             CHARACTER CARD 3: SUZAKU KURURUGI
+             ================================================================= -->
+        <!-- 
+          <article>: Third self-contained character card in the 3-column CSS Grid.
+          Tailwind Classes:
+          - bg-gray-800: Dark slate gray card background.
+          - border: 1px solid border.
+          - border-gray-700: Medium-dark gray default border color.
+          - hover:border-blue-500: Changes border color to royal blue on hover (representing Britannian Knight of Seven / Lancelot colors).
+          - rounded-xl: 0.75rem (12px) rounded corners.
+          - overflow-hidden: Clips inner child elements to rounded corners.
+          - shadow-lg: Large drop shadow.
+          - transition: Smooth transition for hover effects.
+          - duration-300: 300ms transition duration.
+        -->
+        <article class="bg-gray-800 border border-gray-700 hover:border-blue-500 rounded-xl overflow-hidden shadow-lg transition duration-300">
+
+          <!-- 
+            <details>: Native HTML5 interactive disclosure widget for Suzaku's card.
+            Tailwind Classes:
+            - group: Groups the details element for clean semantic structure.
+          -->
+          <details class="group">
+
+            <!-- 
+              <summary>: Clickable card header for Suzaku Kururugi. Clicking anywhere inside <summary> (including the photo and badges) toggles the hidden content below it.
+              Tailwind Classes:
+              - cursor-pointer: Shows hand cursor on hover.
+              - select-none: Prevents accidental text selection when clicking.
+              - hover:bg-gray-700: Lightens card summary background on hover.
+              - transition: Smoothly animates background color.
+              - duration-200: 200ms transition duration.
+              - list-none: Removes default browser disclosure triangle markers for a custom card UI.
+            -->
+            <summary class="cursor-pointer select-none hover:bg-gray-700 transition duration-200 list-none">
+
+              <!-- 
+                <div>: Image container framing Suzaku's portrait at the top of the card.
+                Tailwind Classes:
+                - h-72: Sets fixed height to 18rem (288px) to provide a uniform aspect ratio matching all character cards.
+                - w-full: Spans 100% width of the card.
+                - overflow-hidden: Clips any image overflow, especially during the hover scale animation.
+                - bg-gray-900: Dark placeholder background while the network request resolves.
+                - border-b: Adds a 1px border at the base of the image.
+                - border-gray-700: Matches the card border color.
+              -->
+              <div class="h-72 w-full overflow-hidden bg-gray-900 border-b border-gray-700">
+                <!-- 
+                  <img>: Character portrait graphic asset.
+                  Attributes:
+                  - src="...": Direct URL to the portrait image.
+                  - alt="...": Accessible descriptive text for screen readers.
+                  - loading="lazy": Native browser performance optimization to defer offscreen image loading.
+                  Tailwind Classes:
+                  - w-full: Stretches image to 100% of parent width.
+                  - h-full: Stretches image to 100% of parent height.
+                  - object-cover: Preserves image aspect ratio without distortion by cropping excess boundaries.
+                  - object-top: Anchors the crop to the top of the image to keep the character's face centered.
+                  - group-hover:scale-105: Smoothly scales image up 5% when hovering over the card.
+                  - transition: Applies smooth CSS transition animation.
+                  - duration-500: Sets animation duration to 500 milliseconds for a cinematic effect.
+                -->
+                <img 
+                  src="https://i.pinimg.com/1200x/06/d5/dc/06d5dcc32de47e5e43231dfd4a4809f0.jpg" 
+                  alt="Portrait of Suzaku Kururugi in knight uniform" 
+                  loading="lazy"
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                >
+              </div>
+
+              <!-- 
+                <div>: Text container wrapping character identity details inside Suzaku's summary.
+                Tailwind Classes:
+                - p-6: Restores 1.5rem (24px) padding on all sides below the flush image header.
+              -->
+              <div class="p-6">
+
+                <!-- 
+                  <div>: Top row inside Suzaku's summary holding the faction badge and ID.
+                  Tailwind Classes:
+                  - flex: Flexbox horizontal row.
+                  - justify-between: Pushes items to opposite horizontal edges.
+                  - items-center: Vertically centers items.
+                  - mb-4: 16px bottom margin.
+                -->
+                <div class="flex justify-between items-center mb-4">
+                  <!-- 
+                    <span>: Faction badge styled in royal blue for the Knights of the Round.
+                    Tailwind Classes:
+                    - bg-blue-900: Deep blue background.
+                    - text-blue-200: Light blue text.
+                    - text-xs: 12px font size.
+                    - font-bold: Bold font weight (700).
+                    - px-3: 12px horizontal padding.
+                    - py-1: 4px vertical padding.
+                    - rounded-full: Pill-shaped corners.
+                    - uppercase: Uppercase letters.
+                  -->
+                  <span class="bg-blue-900 text-blue-200 text-xs font-bold px-3 py-1 rounded-full uppercase">
+                    Knights of the Round
+                  </span>
+                  <!-- 
+                    <span>: Dossier ID label.
+                    Tailwind Classes:
+                    - text-xs: 12px font size.
+                    - font-mono: Monospace font family.
+                    - text-gray-400: Muted gray text color.
+                  -->
+                  <span class="text-xs font-mono text-gray-400">ID // Z-07</span>
+                </div>
+
+                <!-- 
+                  <h3>: Character name heading.
+                  Tailwind Classes:
+                  - text-2xl: 24px font size.
+                  - font-bold: Bold font weight (700).
+                  - text-white: Pure white color.
+                  - mb-1: 4px bottom margin.
+                -->
+                <h3 class="text-2xl font-bold text-white mb-1">Suzaku Kururugi</h3>
+
+                <!-- 
+                  <p>: Character alias / title.
+                  Tailwind Classes:
+                  - text-sm: 14px font size.
+                  - text-blue-400: Soft sky-blue text color.
+                  - font-medium: Medium font weight (500).
+                  - mb-4: 16px bottom margin.
+                -->
+                <p class="text-sm text-blue-400 font-medium mb-4">Alias: The White Reaper / Knight of Zero</p>
+
+                <!-- 
+                  <p>: Visual cue instructing the user to click to expand.
+                  Tailwind Classes:
+                  - text-xs: 12px font size.
+                  - text-gray-300: Light gray text.
+                  - bg-gray-900: Dark background box.
+                  - py-2: 8px vertical padding.
+                  - px-3: 12px horizontal padding.
+                  - rounded: 4px border radius.
+                  - border: 1px solid border.
+                  - border-gray-700: Dark gray border color.
+                -->
+                <p class="text-xs text-gray-300 bg-gray-900 py-2 px-3 rounded border border-gray-700">
+                  &#9662; Click card to toggle classified dossier
+                </p>
+
+              </div>
+
+            </summary>
+
+            <!-- 
+              <div>: Revealed biography container for Suzaku when <details> is open.
+              Tailwind Classes:
+              - px-6: 24px left/right padding.
+              - pb-6: 24px bottom padding.
+              - pt-4: 16px top padding.
+              - border-t: 1px top border separator.
+              - border-gray-700: Dark gray border color.
+              - bg-gray-900: Very dark gray background.
+            -->
+            <div class="px-6 pb-6 pt-4 border-t border-gray-700 bg-gray-900">
+
+              <!-- 
+                <p>: Short biography of Suzaku Kururugi.
+                Tailwind Classes:
+                - text-sm: 14px font size.
+                - text-gray-300: Light gray text color.
+                - mb-4: 16px bottom margin.
+              -->
+              <p class="text-sm text-gray-300 mb-4">
+                Son of Japan's last Prime Minister and Lelouch's childhood best friend. Unlike Lelouch, who believes the ends justify the means, Suzaku joins the Britannian military as an Honorary Britannian hoping to reform the corrupt empire peacefully from within. As the pilot of the experimental Lancelot, his unmatched physical reflexes and tragic "Live On" Geass command make him Zero's deadliest rival and ultimate partner.
+              </p>
+
+              <!-- 
+                <ul>: Attribute list for Suzaku.
+                Tailwind Classes:
+                - text-xs: 12px font size.
+                - text-gray-400: Muted gray text color.
+                - space-y-1: 4px vertical gap between list items.
+                - mb-5: 20px bottom margin.
+              -->
+              <ul class="text-xs text-gray-400 space-y-1 mb-5">
+                <li><strong class="text-gray-200">Condition:</strong> Bound by Lelouch's "Live!" Geass Command</li>
+                <li><strong class="text-gray-200">Knightmare Frame:</strong> Z-01 Lancelot Albion</li>
+                <li><strong class="text-gray-200">Allegiance:</strong> Holy Britannian Empire / Zero Requiem</li>
+              </ul>
+
+              <!-- 
+                <a>: External redirect link to Suzaku's Wikipedia article.
+                Tailwind Classes:
+                - inline-block: Enables padding and full width on an anchor element.
+                - w-full: Full 100% width button.
+                - text-center: Centers text horizontally inside the button.
+                - bg-blue-600: Royal blue button background.
+                - hover:bg-blue-700: Darker blue background on hover.
+                - text-white: White text color.
+                - text-sm: 14px font size.
+                - font-semibold: Semi-bold weight (600).
+                - py-2: 8px vertical padding.
+                - px-4: 16px horizontal padding.
+                - rounded: 4px rounded corners.
+                - transition: Smooth property transitions.
+                - duration-200: 200ms transition duration.
+              -->
+              <a 
+                href="https://en.wikipedia.org/wiki/Suzaku_Kururugi" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="inline-block w-full text-center bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold py-2 px-4 rounded transition duration-200"
+              >
+                Read Full Profile on Wikipedia &rarr;
+              </a>
+
+            </div>
+          </details>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         4. ABOUT / LORE SECTION (Thematic Context)
+         ===================================================================== -->
+    <!-- 
+      <section id="about">: Additional semantic section providing context about the series lore.
+      Tailwind Classes:
+      - bg-gray-800: Sets a distinct slate-gray background to visually separate it from the Characters section.
+      - border-t: Adds a 1px top border.
+      - border-gray-700: Colors the top border medium-dark gray.
+      - py-16: Adds 4rem (64px) of top and bottom vertical padding.
+      - px-6: Adds 1.5rem (24px) of left and right horizontal padding.
+    -->
+    <section id="about" class="bg-gray-800 border-t border-gray-700 py-16 px-6">
+
+      <!-- 
+        <div>: Container centering the lore content and organizing it into a 2-column responsive grid.
+        Tailwind Classes:
+        - max-w-5xl: Constrains max width to 64rem (1024px).
+        - mx-auto: Centers the container horizontally.
+        - grid: Activates CSS Grid layout.
+        - grid-cols-1: Single column on mobile screens.
+        - md:grid-cols-2: Two equal columns on medium screens (>=768px) and larger.
+        - gap-10: Adds 2.5rem (40px) of space between the two columns.
+        - items-center: Vertically centers the content of both columns relative to each other.
+      -->
+      <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+        <!-- <div>: Left column containing the lore heading and narrative text. -->
+        <div>
+          <!-- 
+            <h2>: Section heading for the Lore block.
+            Tailwind Classes:
+            - text-2xl: 24px font size on mobile.
+            - md:text-3xl: 30px font size on medium screens and up.
+            - font-bold: Bold font weight (700).
+            - text-white: Pure white color.
+            - mb-4: 16px bottom margin.
+          -->
+          <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
+            Revolution vs. Reform: The Clash of Ideologies
+          </h2>
+
+          <!-- 
+            <p>: Paragraph explaining the core philosophical conflict of Code Geass.
+            Tailwind Classes:
+            - text-gray-300: Light gray text for comfortable reading.
+            - text-sm: 14px font size on mobile.
+            - md:text-base: 16px standard font size on medium screens and up.
+            - mb-4: 16px bottom margin.
+          -->
+          <p class="text-gray-300 text-sm md:text-base mb-4">
+            Directed by Gorō Taniguchi and written by Ichirō Ōkouchi with original character designs by CLAMP, <em>Code Geass: Lelouch of the Rebellion</em> examines whether a corrupt world should be shattered from the outside through revolution (Lelouch) or changed gradually from within by following the rules (Suzaku).
+          </p>
+
+          <!-- 
+            <p>: Second lore paragraph explaining the technical implementation of this page.
+            Tailwind Classes:
+            - text-gray-400: Slightly dimmer gray text.
+            - text-sm: 14px font size.
+          -->
+          <p class="text-gray-400 text-sm">
+            Every interactive dossier above operates using pure HTML5 semantic disclosure elements (<code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code>) combined with utility-first Tailwind CSS classes—achieving zero-dependency responsiveness and accessibility.
+          </p>
+        </div>
+
+        <!-- 
+          <aside>: Semantic HTML5 tag representing complementary tangential information (Key Series Facts box).
+          Tailwind Classes:
+          - bg-gray-900: Dark background box contrasting against the bg-gray-800 section.
+          - p-6: 24px padding on all sides.
+          - rounded-xl: 12px rounded corners.
+          - border: 1px solid border.
+          - border-gray-700: Dark gray border color.
+          - shadow-md: Medium drop shadow.
+        -->
+        <aside class="bg-gray-900 p-6 rounded-xl border border-gray-700 shadow-md">
+          <!-- 
+            <h3>: Heading for the series facts box.
+            Tailwind Classes:
+            - text-lg: 18px font size.
+            - font-bold: Bold font weight (700).
+            - text-red-500: Crimson red accent text color.
+            - mb-4: 16px bottom margin.
+            - uppercase: Capitalizes all letters.
+            - tracking-wider: Increases letter spacing.
+          -->
+          <h3 class="text-lg font-bold text-red-500 mb-4 uppercase tracking-wider">
+            Archive Metadata
+          </h3>
+
+          <!-- 
+            <dl>: Description List element used semantically for key-value pairs (Term <dt> and Description <dd>).
+            Tailwind Classes:
+            - space-y-3: Adds 0.75rem (12px) of vertical spacing between each row.
+            - text-sm: Sets font size to 14px.
+          -->
+          <dl class="space-y-3 text-sm">
+            <!-- <div>: Flex row wrapping a single term/description pair. -->
+            <div class="flex justify-between border-b border-gray-800 pb-2">
+              <!-- <dt>: Description Term (the label). -->
+              <dt class="text-gray-400">Studio:</dt>
+              <!-- <dd>: Description Details (the value). -->
+              <dd class="font-semibold text-white">Sunrise</dd>
+            </div>
+            <div class="flex justify-between border-b border-gray-800 pb-2">
+              <dt class="text-gray-400">Original Run:</dt>
+              <dd class="font-semibold text-white">2006 &ndash; 2008 (50 Episodes)</dd>
+            </div>
+            <div class="flex justify-between border-b border-gray-800 pb-2">
+              <dt class="text-gray-400">Primary Mecha:</dt>
+              <dd class="font-semibold text-white">Knightmare Frames</dd>
+            </div>
+            <div class="flex justify-between">
+              <dt class="text-gray-400">Culmination Plan:</dt>
+              <dd class="font-semibold text-red-400">The Zero Requiem</dd>
+            </div>
+          </dl>
+        </aside>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================================
+       5. FOOTER SECTION
+       ===================================================================== -->
+  <!-- 
+    <footer id="footer">: Semantic HTML5 tag defining the footer at the bottom of the page.
+    Tailwind Classes:
+    - bg-gray-900: Matches the deepest dark background color.
+    - border-t: Adds a 1px top border separating the footer from <main>.
+    - border-gray-800: Colors the top border subtle dark gray.
+    - py-8: Adds 2rem (32px) of top and bottom vertical padding.
+    - px-6: Adds 1.5rem (24px) of left and right horizontal padding.
+    - text-center: Centers all footer text horizontally.
+    - text-gray-500: Sets a muted gray text color appropriate for footer metadata.
+    - text-sm: Sets font size to 0.875rem (14px).
+  -->
+  <footer id="footer" class="bg-gray-900 border-t border-gray-800 py-8 px-6 text-center text-gray-500 text-sm">
+
+    <!-- 
+      <div>: Constrains footer content width and centers it.
+      Tailwind Classes:
+      - max-w-6xl: Max width of 72rem (1152px).
+      - mx-auto: Horizontally centers the container.
+    -->
+    <div class="max-w-6xl mx-auto">
+      <!-- 
+        <p>: Primary copyright and project attribution line.
+        Tailwind Classes:
+        - mb-2: Adds 0.5rem (8px) bottom margin.
+        - text-gray-400: Slightly brighter gray for the primary footer line.
+      -->
+      <p class="mb-2 text-gray-400">
+        &copy; 2026 Code Geass Character Showcase &bull; Built exclusively with Semantic HTML5 &amp; Tailwind CSS.
+      </p>
+
+      <!-- 
+        <p>: Technical compliance note confirming zero JavaScript or external custom CSS was used.
+      -->
+      <p>
+        Zero JavaScript (<code>&lt;script&gt;</code>) &bull; Native HTML5 <code>&lt;details&gt;</code> &amp; <code>&lt;summary&gt;</code> Interactivity.
+      </p>
+    </div>
+
+  </footer>
+
+</body>
+</html>
+
